@@ -141,6 +141,55 @@ const topSkus: ApertureData["topSkus"] = SKU_NAMES.map(([name, cat], i) => {
   };
 });
 
+const PRODUCT_DEFS: [string, string, string, number][] = [
+  ["Atlas Wool Overcoat", "Apparel", "Atlas", 420],
+  ["Ember Silk Blouse", "Apparel", "Ember", 168],
+  ["Meridian Tailored Blazer", "Apparel", "Meridian", 295],
+  ["Cove Linen Shirt", "Apparel", "Cove", 94],
+  ["Vale Merino Sweater", "Apparel", "Vale", 138],
+  ["Drift Chino Trouser", "Apparel", "Drift", 110],
+  ["Cirrus Performance Sneaker", "Footwear", "Cirrus", 145],
+  ["Trailhead Hiking Boot", "Footwear", "Trailhead", 210],
+  ["Marlow Leather Loafer", "Footwear", "Marlow", 185],
+  ["Aero Running Shoe", "Footwear", "Aero", 132],
+  ["Cobble Chelsea Boot", "Footwear", "Cobble", 198],
+  ["Linen Sateen Duvet Set", "Home & Living", "Loom", 240],
+  ["Drift Lounge Chair", "Home & Living", "Drift", 680],
+  ["Hearth Ceramic Vase", "Home & Living", "Hearth", 58],
+  ["Loom Throw Blanket", "Home & Living", "Loom", 96],
+  ["Glow Table Lamp", "Home & Living", "Glow", 124],
+  ["Meridian Leather Tote", "Accessories", "Meridian", 320],
+  ["Halo Cashmere Scarf", "Accessories", "Halo", 88],
+  ["Atlas Leather Belt", "Accessories", "Atlas", 72],
+  ["Cove Sunglasses", "Accessories", "Cove", 145],
+  ["Nimbus Wool Beanie", "Accessories", "Nimbus", 38],
+  ["Bloom Hydrating Serum", "Beauty", "Bloom", 64],
+  ["Lumen Day Cream", "Beauty", "Lumen", 52],
+  ["Ember Scented Candle Set", "Gifting", "Ember", 46],
+];
+
+const products: ApertureData["products"] = PRODUCT_DEFS.map(([name, category, brand, price], i) => {
+  const cost = round(price * rand(0.38, 0.58), 2);
+  const margin = round(((price - cost) / price) * 100, 1);
+  const stockRaw = randInt(0, 240);
+  const stock = i === 6 ? 0 : i === 2 || i === 17 ? randInt(6, 22) : Math.max(stockRaw, 30);
+  const unitsSold = randInt(40, 680) - i * 6;
+  const status = (stock === 0 ? "out-of-stock" : stock < 25 ? "low-stock" : "active") as ApertureData["products"][number]["status"];
+  return {
+    sku: `SKU-${4100 + i}`,
+    name,
+    category,
+    brand,
+    price,
+    cost,
+    margin,
+    stock,
+    unitsSold,
+    revenue: round(unitsSold * price),
+    status,
+  };
+});
+
 const regionPerf: ApertureData["regionPerf"] = Object.values(
   stores.reduce<Record<string, ApertureData["regionPerf"][number]>>((acc, s) => {
     acc[s.region] = acc[s.region] || { region: s.region, netSales: 0, transactions: 0, stores: 0 };
@@ -176,6 +225,7 @@ export const seedData: ApertureData = {
   hourlySales,
   paymentMix,
   topSkus,
+  products,
   regionPerf,
   liveFeed,
 };

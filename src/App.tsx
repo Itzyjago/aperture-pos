@@ -4,6 +4,7 @@ import { Topbar } from "./components/Topbar";
 import { Dashboard } from "./pages/Dashboard";
 import { Kpis } from "./pages/Kpis";
 import { Analytics } from "./pages/Analytics";
+import { Products } from "./pages/Products";
 import { Stub } from "./pages/Stub";
 import { useData } from "./lib/useData";
 
@@ -11,6 +12,7 @@ const TITLES: Record<string, { title: string; sub: string }> = {
   "/": { title: "Command Center", sub: "Real-time retail operations across all stores" },
   "/kpis": { title: "Performance KPIs", sub: "Tracked metrics vs. target and prior period" },
   "/analytics": { title: "Retail Analytics", sub: "Sales intelligence across stores, categories & channels" },
+  "/products": { title: "Product Catalog", sub: "Full assortment — pricing, margin and stock" },
   "/stores": { title: "Stores & Registers", sub: "Fleet status, lanes and staffing" },
   "/transactions": { title: "Transactions", sub: "Ticket-level sales journal" },
   "/inventory": { title: "Inventory", sub: "Stock positions and replenishment" },
@@ -33,6 +35,7 @@ export default function App() {
           <Route path="/" element={<Dashboard data={data} />} />
           <Route path="/kpis" element={<Kpis data={data} />} />
           <Route path="/analytics" element={<Analytics data={data} />} />
+          <Route path="/products" element={<Products data={data} />} />
           <Route path="/stores" element={<Stub title="Stores & Registers" blurb="Fleet view of every store, lane and register — online status, staffing and throughput. Wired to the same live operations feed powering the Command Center." />} />
           <Route path="/transactions" element={<Stub title="Transactions" blurb="Searchable ticket-level sales journal with line items, tenders, refunds and associate attribution." />} />
           <Route path="/inventory" element={<Stub title="Inventory" blurb="Real-time stock positions, low-stock alerts and automated replenishment across the chain." />} />

@@ -28,6 +28,8 @@ backed by a Node/Express API.
   trend, sparkline, and target attainment.
 - **Analytics** — sales & traffic by hour, category mix, store leaderboard,
   payment/tender mix, and top SKUs by units, revenue, and margin.
+- **Products** — the full product catalog: 24 SKUs with brand, pricing, margin,
+  on-hand stock, units sold, and stock status, filterable by category.
 
 ## Tech
 
@@ -64,6 +66,7 @@ Then open <http://localhost:5180>.
 | `/api/overview`  | KPIs, stores, sales trend, live feed, regions      |
 | `/api/kpis`      | KPI cards + store detail                           |
 | `/api/analytics` | category mix, hourly, payment mix, top SKUs        |
+| `/api/products`  | full product catalog                               |
 | `/api/stores`    | store fleet                                        |
 
 ## Note

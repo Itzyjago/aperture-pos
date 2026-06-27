@@ -59,6 +59,20 @@ export interface Sku {
   trend: number;
 }
 
+export interface Product {
+  sku: string;
+  name: string;
+  category: string;
+  brand: string;
+  price: number;
+  cost: number;
+  margin: number;
+  stock: number;
+  unitsSold: number;
+  revenue: number;
+  status: "active" | "low-stock" | "out-of-stock";
+}
+
 export interface RegionPerf {
   region: string;
   netSales: number;
@@ -92,6 +106,7 @@ export interface ApertureData {
   hourlySales: HourPoint[];
   paymentMix: NamedValue[];
   topSkus: Sku[];
+  products: Product[];
   regionPerf: RegionPerf[];
   liveFeed: FeedItem[];
 }

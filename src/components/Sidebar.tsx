@@ -6,6 +6,7 @@ import {
   IcStore,
   IcCart,
   IcBox,
+  IcLayers,
   IcTag,
   IcUsers,
   IcGear,
@@ -56,11 +57,14 @@ export function Sidebar() {
         <NavLink to="/stores" className={item}>
           <IcStore /> Stores &amp; Registers
         </NavLink>
+        <NavLink to="/products" className={item}>
+          <IcBox /> Products
+        </NavLink>
         <NavLink to="/transactions" className={item}>
           <IcCart /> Transactions
         </NavLink>
         <NavLink to="/inventory" className={item}>
-          <IcBox /> Inventory
+          <IcLayers /> Inventory
           <span className="badge">7</span>
         </NavLink>
         <NavLink to="/promotions" className={item}>

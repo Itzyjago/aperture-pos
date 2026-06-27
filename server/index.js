@@ -21,8 +21,11 @@ app.get("/api/overview", (_req, res) =>
     salesTrend: seed.salesTrend,
     liveFeed: seed.liveFeed,
     regionPerf: seed.regionPerf,
+    products: seed.products,
   })
 );
+
+app.get("/api/products", (_req, res) => res.json({ meta: seed.meta, products: seed.products }));
 
 app.get("/api/kpis", (_req, res) => res.json({ meta: seed.meta, kpis: seed.kpis, stores: seed.stores }));
 
